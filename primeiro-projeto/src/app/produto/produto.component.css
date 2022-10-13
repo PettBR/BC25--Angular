@@ -1,0 +1,47 @@
+/* div {
+    width: 300px;
+    height: 500px;
+    background-color: rgb(36, 160, 108);
+    color: white;
+} */
+
+.card {
+    width: 350px;
+    height: 360px;
+    background-color: #70a39d;
+    border-radius: 4px;
+    margin: 1vh;
+    display: flex;
+    
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    color: rgb(44, 7, 78);
+    text-align: center;
+    align-self: center;
+    background-color: rgb(187, 241, 224);
+    width: 100%;
+    border: 1px solid rgb(83, 58, 87);
+    border-radius: 4px;
+}
+
+.card strong{
+    align-self: flex-start;
+}
+
+p.card-text{
+    color: rgb(22, 56, 8);
+    font-style: italic;
+}
+
+.card img{
+    margin: 2px;
+    width: 98%;
+    display: flex;
+    align-self: center;
+}
