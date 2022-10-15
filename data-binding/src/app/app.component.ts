@@ -40,6 +40,16 @@ export class AppComponent {
     }
   };
 
+  
+
+  aumentarValor(): void {
+    this.n1 += 1;
+  }
+
+  diminuirValor(): void {
+    this.n2 -=1;
+  }
+
 
   
 }
