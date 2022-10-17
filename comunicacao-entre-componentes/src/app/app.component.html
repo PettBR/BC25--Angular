@@ -1,0 +1,24 @@
+<section>
+<app-card titulo="Coxinha de Frango" 
+banner="https://media.istockphoto.com/photos/perfect-cushion-on-white-background-picture-id465763286"
+username="Coxinha-Sensei"
+corBtn="rgb(255,50,50)"></app-card>
+
+<app-card titulo="Bolinha de Queijo"
+banner="https://media.istockphoto.com/photos/cheese-ball-picture-id183597870"
+username="Mestre Cheeseballius"
+corBtn="coral"></app-card>
+
+<app-card titulo="Croquete de Carne"
+banner="https://media.istockphoto.com/photos/golden-brown-mouthwatering-croquettes-or-croquetas-picture-id511369024"
+username="Croqueteiro crossfitero"
+corBtn="green"></app-card>
+</section>
+<br>
+<!-- Ao clicar no botão, desejo executar o método click() do input file  -->
+<!-- Variáveis de Template - Templetave Variables -->
+<app-uploader (uploadCompleto)="mostrarMsg()"></app-uploader>
+<br>
+<input type="file" #inputFile>
+<br>
+<button id="btn" (click)="inputFile.click()">Selecionar um arquivo</button>
