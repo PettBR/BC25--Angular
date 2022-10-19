@@ -2,12 +2,12 @@
     <div class="container-form-cartoes">
         <div class="container-cartoes">
             <div class="cartao-frente">
-                <img [src]="bandeira" alt="bandeira" width="60px">
+                <img [src]="bandeira" alt="bandeira">
                 <div class="info">
                     <p>{{ numeroCartao }}</p>
                     <br>
                     <div>
-                        <p>{{ nomeCartao }}</p>
+                        <p>{{ nomeCartao.toUpperCase() }}</p>
                         <p> {{ mm }} / {{ aa }} </p>
                     </div>
                 </div>
@@ -29,17 +29,17 @@
         </div>
         <div class="my-form-group">
             <label for="">Número do Cartão:</label>
-            <input type="text" [(ngModel)]="numeroCartao" (change)="alterarBandeira()" placeholder="000 000 000 000"
+            <input type="text" [(ngModel)]="numeroCartao" name="numeroCartao" (focus)="limparCampoNumeroCartao()" (change)="alterarBandeira()" placeholder="000 000 000 000"
                 maxlength="15" />
         </div>
         <div class="my-form-group2">
             <label for="">Data de Expiração:</label>
-            <input type="text" [(ngModel)]="mm" placeholder="MM" />
-            <input type="text" [(ngModel)]="aa" placeholder="AA" />
+            <input type="text" name="MM" [(ngModel)]="mm" (focus)="limparCampoMesExpira()" placeholder="MM" maxlength="2" />
+            <input type="text" name="AA" [(ngModel)]="aa" (focus)="limparCampoAnoExpira()" placeholder="AA" maxlength="2" />
         </div>
         <div class="my-form-group2">
             <label for="">CVV:</label>
-            <input type="text" [(ngModel)]="cvv" placeholder="CVV" />
+            <input type="text" name="CVV" [(ngModel)]="cvv" (focus)="limparCampoCvv()" placeholder="CVV" maxlength="3" />
         </div>
         <button class="my-button toda-largura">Confirmar</button>
     </form>

@@ -146,3 +146,7 @@
     background-image: linear-gradient(to bottom right, rgba(140, 0, 255, 0.7), rgb(0, 0, 255,0.8));
 }
 
+.my-button:hover{
+    cursor: pointer;
+}
+
