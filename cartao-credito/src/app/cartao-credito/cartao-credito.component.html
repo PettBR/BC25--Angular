@@ -1,0 +1,46 @@
+<section class="form-mais-cartoes">
+    <div class="container-form-cartoes">
+        <div class="container-cartoes">
+            <div class="cartao-frente">
+                <img [src]="bandeira" alt="bandeira" width="60px">
+                <div class="info">
+                    <p>{{ numeroCartao }}</p>
+                    <br>
+                    <div>
+                        <p>{{ nomeCartao }}</p>
+                        <p> {{ mm }} / {{ aa }} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cartao-tras">
+                <div class="bloco-preto"></div>
+                <div class="cvv">
+                    <p>{{ cvv }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="my-form">
+        <div class="my-form-group">
+            <label for="Nome do Titular do Cartão">Nome:</label>
+            <input type="text" [(ngModel)]="nomeCartao" (focus)="limparCampoNome()" maxlength="30" name="nome"
+                placeholder="Nome do Titular do Cartão" />
+        </div>
+        <div class="my-form-group">
+            <label for="">Número do Cartão:</label>
+            <input type="text" [(ngModel)]="numeroCartao" (change)="alterarBandeira()" placeholder="000 000 000 000"
+                maxlength="15" />
+        </div>
+        <div class="my-form-group2">
+            <label for="">Data de Expiração:</label>
+            <input type="text" [(ngModel)]="mm" placeholder="MM" />
+            <input type="text" [(ngModel)]="aa" placeholder="AA" />
+        </div>
+        <div class="my-form-group2">
+            <label for="">CVV:</label>
+            <input type="text" [(ngModel)]="cvv" placeholder="CVV" />
+        </div>
+        <button class="my-button toda-largura">Confirmar</button>
+    </form>
+</section>
