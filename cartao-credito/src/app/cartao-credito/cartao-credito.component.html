@@ -29,13 +29,13 @@
         </div>
         <div class="my-form-group">
             <label for="">Número do Cartão:</label>
-            <input type="text" [(ngModel)]="numeroCartao" name="numeroCartao" (focus)="limparCampoNumeroCartao()" (change)="alterarBandeira()" placeholder="000 000 000 000"
-                maxlength="15" />
+            <input type="text" [(ngModel)]="numeroCartao" name="numeroCartao" (focus)="limparCampoNumeroCartao()" (change)="alterarBandeira()" placeholder="0000 0000 0000 0000"
+                maxlength="19" />
         </div>
         <div class="my-form-group2">
             <label for="">Data de Expiração:</label>
-            <input type="text" name="MM" [(ngModel)]="mm" (focus)="limparCampoMesExpira()" placeholder="MM" maxlength="2" />
-            <input type="text" name="AA" [(ngModel)]="aa" (focus)="limparCampoAnoExpira()" placeholder="AA" maxlength="2" />
+            <input type="text" name="MM" [(ngModel)]="mm" (focus)="limparCampoMesExpira()" placeholder="MM" maxlength="2" minlength="2" />
+            <input type="text" name="AA" [(ngModel)]="aa" (focus)="limparCampoAnoExpira()" placeholder="AA" maxlength="2" minlength="2" />
         </div>
         <div class="my-form-group2">
             <label for="">CVV:</label>
