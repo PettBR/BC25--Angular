@@ -26,6 +26,15 @@ export class AppComponent {
 
   produtos: Produto[] = [];
 
+// Função pra limpar os campos
+  limpaCampos(): void {
+    this.nome = '';
+    this.imagem = '';
+    this.preco = 0;
+    this.estoque = 0;
+    this.descricao = '';
+  }
+
   adicionarProduto(evento: any): void {
     console.log(evento);
     /**
@@ -38,12 +47,30 @@ export class AppComponent {
     evento.stopPropagation();
 
     this.produtos.push({
-      descricao: this.descricao,
-      estoque: this.estoque,
-      imagem: this.imagem,
       nome: this.nome,
-      preco: this.preco
+      imagem: this.imagem,
+      preco: this.preco,
+      estoque: this.estoque,     
+      descricao: this.descricao
     });
+
+    // Função pra limpar os campos após enviar
+    this.limpaCampos();  
   };
+
+  // removendo o card clicado no outro componente do array deste componente com o splice
+  onEventoRemoverCardProd(p: Produto){
+    for(let i = 0; i < this.produtos.length; i++ ){
+      if(this.produtos[i].nome == p.nome){
+        this.produtos.splice(i,1)
+      }
+    }
+  }
+
+
+
+
+
+
 
 }

@@ -1,6 +1,7 @@
 .card{
     width: 250px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-image: linear-gradient(to top, rgb(179, 179, 179,0.2), rgba(179, 179, 179, 0.918));
 }
 
 .card img{

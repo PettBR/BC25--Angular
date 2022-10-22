@@ -7,6 +7,7 @@ main.wrapper {
   
   .app-form {
     border-right: 2px solid #aaaaaa;
+    background-image: linear-gradient(to top, rgba(253, 59, 59, 0.2), rgba(142, 255, 170, 0.918));
   }
   
   .produtos {
@@ -16,4 +17,5 @@ main.wrapper {
     grid-template-columns: repeat(3, 250px);
     gap: 10px;
     justify-content: center;
+    background-image: linear-gradient(to top, rgba(228, 209, 253, 0.98), rgba(176, 200, 250, 0.5));
   }
