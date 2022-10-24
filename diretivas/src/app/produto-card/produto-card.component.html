@@ -3,7 +3,7 @@
     ngIf serve para que a partir de uma determinada condição booleana um elemento HTML ou componente apareça na sua tela ou não
  -->
 
-<div class="card" *ngIf="mostrarProduto == true">
+<div class="card" *ngIf="mostrarProduto == true; else conteudoAlternativo">
     <img [src]="prod.imagem" alt="" class="card-image-top">
     <div class="card-body">
         <h5 class="card-title">{{ prod.nome }}</h5>
@@ -14,14 +14,12 @@
         maior que 100 → verde -->
 
         <!-- ngClass te permite adicionar ou remover classes de um elemento a partir de condições lógicas (booleanas) -->
-        <span class="badge mb-1"
-            [ngClass]="{
+        <span class="badge mb-1" [ngClass]="{
                 'bg-danger': prod.estoque <= 10,
                 'bg-warning': prod.estoque > 10 && prod.estoque <= 30,
                 'bg-primary': prod.estoque > 30 && prod.estoque <= 100,
                 'bg-success':prod.estoque > 100
-            }"
-        >
+            }">
             {{ prod.estoque }} unidades restantes
         </span>
         <p class="card-text text-truncate">
@@ -31,15 +29,35 @@
             Esconder Produto
         </button>
         <!-- Botão para remover o card, emite o evento para o app.component -->
-        <button class="btn btn-sm btn-light" (click)="onClickRemove()"> 
+        <button class="btn btn-sm btn-light" (click)="onClickRemove()">
             Remover
         </button>
     </div>
 </div>
-<div class="card" *ngIf="mostrarProduto == false">
+<!-- Como eu fiz antes de aprender o ng-template -->
+<!-- <div class="card" *ngIf="mostrarProduto == false">
     <div class="card-body"></div>
     <h5 class="card-title">O produto {{ prod.nome }} foi escondido, clique no botão abaixo para revelá-lo novamente:</h5>
     <button class="btn btn-sm btn-info" (click)="escondeMostraProd()">
         Mostrar produto: {{ prod.nome }}
     </button>
-</div>
+</div> -->
+
+
+<!-- 
+    ng-template serve como um componente auxiliar que nos permite criar a estrutura 'else' de algum *ngIf
+
+    Por padrão, qualquer coisa que você coloque dentro do componente aparecerá na sua tela. Para o conteúdo aparecer, você precisará criar um 'gatilho'
+
+    O gatilho é linkar o # com o nome que eu dei com o ngIf
+ -->
+<ng-template #conteudoAlternativo>
+    <div class="card">
+        <div class="card-body"></div>
+        <h5 class="card-title">O produto {{ prod.nome }} foi escondido para os usuários, clique no botão abaixo para
+            revelá-lo novamente:</h5>
+        <button class="btn btn-sm btn-info" (click)="escondeMostraProd()">
+            Mostrar produto: {{ prod.nome }}
+        </button>
+    </div>
+</ng-template>

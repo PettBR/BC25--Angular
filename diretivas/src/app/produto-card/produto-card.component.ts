@@ -26,7 +26,7 @@ export class ProdutoCardComponent implements OnInit {
 
   // emitir o evento do componente produto-card para o componente app
   @Output() 
-  eventoRemoverCardProd = new EventEmitter<any>();
+  eventoRemoverCardProd = new EventEmitter<Produto>();
 
   onClickRemove(){
     this.eventoRemoverCardProd.emit(this.prod);
