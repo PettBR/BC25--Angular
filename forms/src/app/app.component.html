@@ -1,0 +1,60 @@
+<!-- <button mat-raised-button color="accent">Estilizado com o Angular Material</button> -->
+
+<div class="flex">
+  <mat-card class="card-form">
+    <mat-card-title>Cadastro de Usuários</mat-card-title>
+    <mat-card-content>
+      <!--
+        → Informar que o formulário será validado pelo Template Driven Forms
+          → 'ngForm' informa que o o formulário utilizará o método de validação
+          do Template Driven Forms
+       -->
+      <form action="#" #userForm>
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input 
+          type="text" 
+          matInput 
+          [(ngModel)]="dadosUsuario.nome" 
+          name="nome"
+          required
+          minlength="3"
+          #inputNome="ngModel"
+          >
+          <!-- Erro diferente dependendo do que falta no campo -->
+          <mat-error *ngIf="inputNome.errors?.['minlength']"> Número mínimo de caracteres requerido
+          </mat-error>
+          <mat-error *ngIf="inputNome.errors?.['required']">Esse campo aqui é obrigatório, amigão</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Sobrenome</mat-label>
+          <input 
+          type="text" 
+          matInput 
+          [(ngModel)]="dadosUsuario.sobrenome" 
+          name="sobrenome">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input 
+          type="email" 
+          matInput 
+          [(ngModel)]="dadosUsuario.email" 
+          name="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input 
+          type="password" 
+          matInput 
+          [(ngModel)]="dadosUsuario.senha" 
+          name="senha">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">Cadastrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
