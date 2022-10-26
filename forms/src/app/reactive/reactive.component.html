@@ -1,0 +1,36 @@
+<!-- 
+    Utilizamos [formControl] quando o FormControl está fora de um FormGroup
+
+    Quando o formControl estiver dentro de um FormGroup, utilize formControlName
+
+exemplo:
+<mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput [formControl]="nome">
+          </mat-form-field>
+
+ -->
+
+
+<mat-card>
+    <mat-card-title>Cadastro</mat-card-title>
+    <mat-card-content>
+      <form action="" (ngSubmit)="enviar()" [formGroup]="dadosForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput formControlName="nome">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput formControlName="email">
+          </mat-form-field>
+    
+          <mat-form-field appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput formControlName="senha">
+          </mat-form-field>
+          <button type="button" mat-raised-button color="accent">Cadastrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

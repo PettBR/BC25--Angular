@@ -9,7 +9,7 @@
           → 'ngForm' informa que o o formulário utilizará o método de validação
           do Template Driven Forms
        -->
-      <form action="#" #userForm>
+      <form action="#" #userForm="ngForm" (ngSubmit)="enviarForm()">
         <mat-form-field appearance="outline">
           <mat-label>Nome</mat-label>
           <input 
@@ -22,9 +22,10 @@
           #inputNome="ngModel"
           >
           <!-- Erro diferente dependendo do que falta no campo -->
-          <mat-error *ngIf="inputNome.errors?.['minlength']"> Número mínimo de caracteres requerido
+          <mat-error>
+            <span *ngIf="inputNome.errors?.['minlength']">Valor mínimo de caracteres requerido</span>
+            <span *ngIf="inputNome.errors?.['required']">Esse campo aqui é obrigatório, amigão</span>
           </mat-error>
-          <mat-error *ngIf="inputNome.errors?.['required']">Esse campo aqui é obrigatório, amigão</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -33,7 +34,16 @@
           type="text" 
           matInput 
           [(ngModel)]="dadosUsuario.sobrenome" 
-          name="sobrenome">
+          name="sobrenome"
+          required
+          minlength="2"
+          #inputSobrenome="ngModel"
+          >
+          <!-- O método getError informa se o problema de validação está vindo de algum atributo de validação em específico -->
+          <mat-error>
+            <span *ngIf="inputSobrenome.getError('minlength')">Valor mínimo de caracteres requerido</span>
+            <span *ngIf="inputSobrenome.getError('required')">Esse campo aqui é obrigatório, amigão</span>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -42,7 +52,14 @@
           type="email" 
           matInput 
           [(ngModel)]="dadosUsuario.email" 
-          name="email">
+          name="email"
+          required
+          email
+          #inputEmail="ngModel"
+          >
+          <mat-error>
+            Esse campo aqui é obrigatório, amigão
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -51,10 +68,28 @@
           type="password" 
           matInput 
           [(ngModel)]="dadosUsuario.senha" 
-          name="senha">
+          name="senha"
+          required
+          minlength="8"
+          #inputSenha
+          >
+          <mat-error>
+            Esse campo aqui é obrigatório, amigão
+          </mat-error>
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary">Cadastrar</button>
+        <!-- [disabled]="userForm.invalid" → conecta com o #userForm no inicio da tag form -->
+        <button 
+        type="submit" 
+        mat-raised-button 
+        color="primary"
+        [disabled]="userForm.invalid"
+        >Cadastrar</button>
+        <!-- Para teste visual:   -->
+        <!-- <p>O formulário está inválido? ={{ userForm.invalid }}</p> -->
       </form>
     </mat-card-content>
   </mat-card>
 </div>
+<hr>
+<!-- Componente reactive -->
+<app-reactive></app-reactive>
