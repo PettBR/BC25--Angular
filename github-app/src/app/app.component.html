@@ -1,0 +1,30 @@
+<main class="container">
+  <section class="search">
+    <img src="/assets/github.svg" alt="Github" *ngIf="gUser == undefined">
+    <form action="#" id="search-form" [formGroup]="githubForm" (ngSubmit)="procurar()">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput placeholder="Ex: frogs123" formControlName="username">
+      </mat-form-field>
+      <button mat-flat-button color="accent" matTooltip="Procurar Usuário" [disabled]="githubForm.invalid">
+        <mat-icon>search</mat-icon>
+      </button>
+    </form>
+  </section>
+  <section class="sectionUser" *ngIf="gUser != undefined">
+    <h3>Name: {{ gUser.name  || 'Name not found for this user' }}</h3>
+    <h3>Login: {{ gUser.login || 'Login not found for this user'}}</h3>
+    <h3>Followers: {{ gUser.followers || 'Followers not found for this user'}}</h3>
+    <h3>Following: {{ gUser.following || 'Following not found for this user' }}</h3>
+    <h3>Blog: {{ gUser.blog || 'Blog not found for this user'}}</h3>
+    <h3>Location: {{ gUser.location || 'Location not found for this user' }}</h3>
+    <h3>Email: {{ gUser.email || 'email not found for this user'}}</h3>
+    <h3>Bio: {{ gUser.bio || 'bio not found for this user'}}</h3>
+    <h3>Repositories: {{ gUser.public_repos || 'repositories not found for this user' }}</h3>
+    <h3>URL: {{ gUser.html_url || 'URL not found for this user' }}</h3>
+    <img [src]="gUser.avatar_url" alt="avatar not found" width="250" height="250"/>
+  </section>
+  <section class="sectionRepos" *ngIf="gUser != undefined">
+
+  </section>
+</main>
