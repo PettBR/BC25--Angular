@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private router: Router
     ) {
     this.formLogin = fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required], Validators.email],
       senha: ['', [Validators.required]]
     });
   }
@@ -34,11 +34,15 @@ export class LoginComponent implements OnInit {
   }
 
   public signInEmailAndPassword(): void{
+    if(this.formLogin.valid) {
     const user: User = this.formLogin.value;
     this.authService.authenticateByEmailAndPassword(user).subscribe(credencials => {
       this.notification.showMessage("Autenticado com email e senha!");
       this.router.navigate(["/home"])
-    })
+    });
+  } else {
+    this.notification.showMessage("Dados inválidos.")
+  }
   }
 
 }
