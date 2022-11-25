@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   public signInGoogle(): void {
     this.authService.authenticateByGoogle().subscribe(crendencials => {
       this.notification.showMessage("Autenticado com Google!");
+      this.router.navigate(["/home"])
     })
   }
 
