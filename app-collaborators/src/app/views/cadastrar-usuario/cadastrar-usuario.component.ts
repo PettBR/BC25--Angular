@@ -17,7 +17,7 @@ export class CadastrarUsuarioComponent implements OnInit {
   constructor(fb: FormBuilder, private authService: AuthService, private router: Router,
     private notification: NotificationService) {
     this.formCadastro = fb.group({
-      email: ['', [Validators.required], Validators.email],
+      email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required]]
     });
   }
